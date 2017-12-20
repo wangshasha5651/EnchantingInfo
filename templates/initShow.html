@@ -1,0 +1,5 @@
+{% for news in news_list %}
+
+<a href = "{{news.getHref}}"> {{ news.getTitle }} </a> {{ news.getTime }}<br/><br/>
+
+{% endfor %}
