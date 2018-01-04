@@ -20,7 +20,17 @@ from django.conf.urls import url
 import initDemo
 from initDemo import views
 
+from django.views.generic import TemplateView
+
+#vue.js所需
+from django.conf.urls import include
+import initDemo.urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^initDemo/', initDemo.views.getNews),
+    url(r'^initDemo/', include(initDemo.urls)),
+    url(r'^$', TemplateView.as_view(template_name = "index.html")),
 ]
+
+#url(r'^initDemo/', include(initDemo.urls)), 
+#

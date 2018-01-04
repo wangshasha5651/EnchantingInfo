@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'initDemo',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -55,7 +57,8 @@ ROOT_URLCONF = 'EnchantingInfo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+"/templates",], 
+        #'DIRS': [BASE_DIR+"/templates",], 
+        'DIRS': ['initfrontend/dist'], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +122,36 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "initfrontend/dist/static"),
+]
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = ()
+
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
+CORS_ALLOW_HEADERS = (
+
+    'x-requested-with',
+
+    'content-type',
+
+    'accept',
+
+    'origin',
+
+    'authorization',
+
+    'x-csrftoken'
+
+)
+
